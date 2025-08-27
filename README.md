@@ -46,5 +46,6 @@
 ```git
 
 git add .
+git commit -m"comentario"
 
 ```
