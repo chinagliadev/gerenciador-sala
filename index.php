@@ -10,7 +10,8 @@ $scriptConsulta = "SELECT
                    FROM tb_reserva_sala trs
 	                INNER JOIN tb_sala ts ON trs.id = ts.id
 	                INNER JOIN tb_turma tt ON trs.id = tt.id
-	                INNER JOIN tb_docente td ON trs.docente_id = td.id;";
+	                INNER JOIN tb_docente td ON trs.docente_id = td.id
+                    WHERE trs.deletado != 1;";//selecionando apenas registros da tabela que sejam diferente de 1;
 
 $dados = $conn->query($scriptConsulta)->fetchAll();
 
@@ -37,7 +38,7 @@ $dados = $conn->query($scriptConsulta)->fetchAll();
                 <td><?= $linha['sigla_turma']?></td>
                 <td><?= $linha['nome_docente']?></td>
                 <td>
-                    <a href="#" class="btn btn-danger">
+                    <a href="./reserva-delete.php?id_deletar=<?= $linha['id'] ?>" class="btn btn-danger">
                         <i class="bi bi-trash3-fill"></i>
                     </a>
                 </td>
