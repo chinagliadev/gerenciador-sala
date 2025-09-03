@@ -3,7 +3,7 @@ include './template/header.php';
 include './template/modal-cadastro-sala.php';
 require './config.php';
 
-$scriptListar = "SELECT * FROM tb_sala";
+$scriptListar = "SELECT * FROM tb_sala WHERE deletado = 0";
 
 $resultadoLista = $conn->query($scriptListar)->fetchAll();
 
@@ -20,6 +20,7 @@ $resultadoLista = $conn->query($scriptListar)->fetchAll();
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Sala</th>
+                <th scope="col">Tipo da sala</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -28,11 +29,12 @@ $resultadoLista = $conn->query($scriptListar)->fetchAll();
             <tr>
                 <th scope="row"><?= $linha['id']?></th>
                 <td><?= $linha['identificacao']?></td>
+                <td><?= $linha['tipo_sala']?></td>
                 <td>
-                    <a href="#" class="btn btn-warning">
+                    <a href="./sala-editar.php?idEditar=<?= $linha["id"]?>" class="btn btn-warning">
                         <i class="bi bi-pencil-square"></i>
                     </a>
-                    <a href="#" class="btn btn-danger">
+                    <a href="./sala-deletar.php?idDeletar=<?= $linha["id"]?>" class="btn btn-danger">
                         <i class="bi bi-trash3-fill"></i>
                     </a>
                 </td>
