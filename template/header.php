@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg bg-light rounded mb-4">
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-white rounded mb-4">
         <div class="container">
             <div class="navbar-collapse d-lg-flex">
                 <a class="navbar-brand col-lg-3 me-0" href="#">Sisteminha Top</a>

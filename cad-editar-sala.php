@@ -1,7 +1,6 @@
 <?php
 include './template/header.php';
-include './template/modal-cadastro-sala.php';
-require './config.php';
+include './template/modal-editar-sala.php';
 
 $scriptListar = "SELECT * FROM tb_sala WHERE deletado = 0";
 
@@ -45,3 +44,12 @@ $resultadoLista = $conn->query($scriptListar)->fetchAll();
         </tbody>
     </table>
 </section>
+
+<script>
+
+    //Carregar o modal automaticamente
+  document.addEventListener("DOMContentLoaded", function () {
+    var modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
+        modalEditar.show();
+  });
+</script>

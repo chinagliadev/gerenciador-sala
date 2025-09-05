@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalSala" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modalCadastrar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="./sala-cadastro.php" method="POST" id="form-sala-cadastro">
+                <form action="./sala-cadastro.php" method="POST" id="form-cadastrar-cadastro">
                     <div class="campo-sala d-flex gap-2 mt-2">
                         <label style="width: 20%;" for="drop-sala" class="fw-semibold my-auto">Identificacao:</label>
                         <input type="text" class="form-control" placeholder="Informe o nome da sala" name="txtIndentificacao" id="txtIndentificacao">
@@ -35,7 +35,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     Fechar
                 </button>
-                <button type="submit" class="btn btn-primary" form="form-sala-cadastro">
+                <button type="submit" class="btn btn-primary" form="form-cadastrar-cadastro">
                     Cadastrar
                 </button>
             </div>
