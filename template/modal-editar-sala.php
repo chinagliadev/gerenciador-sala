@@ -12,7 +12,7 @@ $dadosResultao = $conn->query($script)->fetch();
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal Editar Sala</h1>
-                <button type="button" class="btn-close" id="btnCloseModal" data-bs-dismiss="modal" aria-label="Close"></button>
+                <a  class="btn-close" href="./cad-sala.php" id="btnCloseModal"></a>
             </div>
             <div class="modal-body">
                 <form action="./sala-editar.php" method="POST" id="form-editar-cadastro">
@@ -39,23 +39,10 @@ $dadosResultao = $conn->query($script)->fetch();
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="btnFecharModal">Fechar</button>
+                <a href="./cad-sala.php" class="btn btn-secondary" id="btnFecharModal" >Fechar</a>
                 <button type="submit" class="btn btn-warning" form="form-editar-cadastro">Editar</button>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-
-var modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
-modalEditar.show();
-
-document.getElementById('btnCloseModal').addEventListener('click', function() {
-    window.location.href = "../cad-sala.php";
-});
-
-document.getElementById('btnFecharModal').addEventListener('click', function() {
-    window.location.href = "../cad-sala.php";
-});
-</script>

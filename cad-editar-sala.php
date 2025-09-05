@@ -2,7 +2,7 @@
 include './template/header.php';
 include './template/modal-editar-sala.php';
 
-$scriptListar = "SELECT * FROM tb_sala WHERE deletado = 0";
+$scriptListar = "SELECT * FROM tb_sala WHERE desativado = 0";
 
 $resultadoLista = $conn->query($scriptListar)->fetchAll();
 

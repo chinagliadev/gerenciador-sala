@@ -8,7 +8,7 @@ var_dump($id);
 const DELETEATIVADO = 0;
 const DELETEDESATIVADO = 1;
 
-$script = "UPDATE tb_sala SET deletado = :desativado WHERE id = :id";
+$script = "UPDATE tb_sala SET desativado = :desativado WHERE id = :id";
 
 $resultadoDeletar = $conn->prepare($script)->execute([
     ':desativado' => DELETEDESATIVADO,
