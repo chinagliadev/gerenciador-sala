@@ -1,6 +1,7 @@
 <?php
 include './template/header.php';
 include './template/modal-cadastro-sala.php';
+include './template/modal-editar.php';
 require './config.php';
 
 $scriptListar = "SELECT * FROM tb_sala WHERE deletado = 0";
@@ -31,10 +32,17 @@ $resultadoLista = $conn->query($scriptListar)->fetchAll();
                     <td><?= $linha['identificacao'] ?></td>
                     <td><?= $linha['tipo_sala'] ?></td>
                     <td>
-                        <a href="./cad-editar-sala.php?idEditar=<?= $linha['id'] ?>" class="btn btn-warning">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-
+                        <button
+                            type="button"
+                            class="btn btn-warning"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                            data-identificacao="<?= $linha['identificacao'] ?>"
+                            data-quant_alunos="<?= $linha['quant_suporte_alunos'] ?>"
+                            data-tipo_sala="<?= $linha['tipo_sala'] ?>"
+                            data-id="<?= $linha['id'] ?>">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
 
                         <a href="./sala-deletar.php?idDeletar=<?= $linha["id"] ?>" class="btn btn-danger">
                             <i class="bi bi-trash3-fill"></i>

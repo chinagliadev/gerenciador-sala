@@ -20,7 +20,7 @@
                     <div class="campo-sala d-flex gap-2 mt-2">
                         <label style="width: 20%;" for="tipo-sala" class="fw-semibold my-auto">Sala:</label>
                         <select id="tipo-sala" name="tipo-sala" class="form-select">
-                            <option selected>Selecione a Sala</option>
+                            <option selected disabled>Selecione a Sala</option>
                             <option value="Convencional">Convencional</option>
                             <option value="Laboratorio">Laboratorio</option>
                             <option value="Laboratorio Hardware">Laboratorio Hardware</option>

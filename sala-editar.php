@@ -5,8 +5,8 @@ echo "<h1>ola</h1>";
 
 $id = $_POST['txtId'];
 $identificacao = $_POST['txtIdentificacao'];
-$quant_suporte_alunos = $_POST['txtQuantAlunos'];
-$tipo_sala = $_POST['tipo-sala-editar'];
+$quant_suporte_alunos = $_POST['txtQtdAlunos'];
+$tipo_sala = $_POST['txtTipoSala'];
 
 $script = "UPDATE tb_sala 
            SET identificacao = :identificacao, 
@@ -23,5 +23,4 @@ $stmt->execute([
 ]);
 
 header('Location: ./cad-sala.php');
-exit;
 ?>
