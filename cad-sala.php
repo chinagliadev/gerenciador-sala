@@ -3,7 +3,7 @@ include './template/header.php';
 include './template/modal-cadastro-sala.php';
 require './config.php';
 
-$scriptListar = "SELECT * FROM tb_sala WHERE desativado = 0";
+$scriptListar = "SELECT * FROM tb_sala WHERE deletado = 0";
 
 $resultadoLista = $conn->query($scriptListar)->fetchAll();
 

@@ -1,55 +1,41 @@
 <?php
 include './template/header.php';
-include './template/modal-editar-sala.php';
+require './config.php';
 
-$scriptListar = "SELECT * FROM tb_sala WHERE desativado = 0";
+$id = $_GET['idEditar'];
 
-$resultadoLista = $conn->query($scriptListar)->fetchAll();
+$script = "SELECT * FROM tb_sala WHERE id = $id";
+$dados = $conn->query($script)->fetch();
 
 ?>
 
-<section class="container mt-5">
-    <table class="table table-striped table-hover text-center">
-        <div class="text-end mb-3">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCadastrar">
-                <i class="bi bi-plus-circle"></i> Sala
-            </button>
-        </div>
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Sala</th>
-                <th scope="col">Tipo da sala</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($resultadoLista as $linha) { ?>
-                <tr>
-                    <th scope="row"><?= $linha['id'] ?></th>
-                    <td><?= $linha['identificacao'] ?></td>
-                    <td><?= $linha['tipo_sala'] ?></td>
-                    <td>
-                        <a href="./cad-editar-sala.php?idEditar=<?= $linha['id'] ?>" class="btn btn-warning">
-                            <i class="bi bi-pencil"></i>
-                        </a>
+<section class="container mt-5 d-flex justify-content-center">
+    <div class="w-100 bg-white p-4 rounded shadow" style="max-width: 500px;">
+        <h1 class="display-6 text-center mb-4">Editar Sala</h1>
+        <form action="./sala-editar.php" method="POST">
+            <input type="hidden" id="txtId" name="txtId" value="<?= $dados['id'] ?>">
+            <div class="mb-3">
+                <label for="txtIdentificacao" class="form-label">Identificação</label>
+                <input type="text" class="form-control" id="txtIdentificacao" name="txtIdentificacao" required value="<?= $dados['identificacao'] ?>">
+            </div>
+            <div class="mb-3">
+                <label for="txtQuantAlunos" class="form-label">Quant. Alunos</label>
+                <input type="number" class="form-control" id="txtQuantAlunos" name="txtQuantAlunos" required value="<?= $dados['quant_suporte_alunos'] ?>">
+            </div>
+            <div class="mb-3">
+                <label for="tipo-sala-editar" class="form-label">Sala</label>
+                <select id="tipo-sala-editar" name="tipo-sala-editar" class="form-select" required>
+                    <option disabled <?= $dados['tipo_sala'] == '' ? 'selected' : '' ?>>Selecione a Sala</option>
+                    <option value="Convencional" <?php if ($dados['tipo_sala'] == 'Convencional') echo 'selected'; ?>>Convencional</option>
+                    <option value="Laboratorio" <?php if ($dados['tipo_sala'] == 'Laboratorio') echo 'selected'; ?>>Laboratório</option>
+                    <option value="Laboratorio Hardware" <?php if ($dados['tipo_sala'] == 'Laboratorio Hardware') echo 'selected'; ?>>Laboratório Hardware</option>
+                    <option value="Laboratorio Enfermagem" <?php if ($dados['tipo_sala'] == 'Laboratorio Enfermagem') echo 'selected'; ?>>Laboratório Enfermagem</option>
+                    <option value="Atelie de moda" <?php if ($dados['tipo_sala'] == 'Atelie de moda') echo 'selected'; ?>>Ateliê de Moda</option>
+                    <option value="Atelie de design" <?php if ($dados['tipo_sala'] == 'Atelie de design') echo 'selected'; ?>>Ateliê de Design</option>
+                </select>
+            </div>
 
-
-                        <a href="./sala-deletar.php?idDeletar=<?= $linha["id"] ?>" class="btn btn-danger">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+            <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        </form>
+    </div>
 </section>
-
-<script>
-
-    //Carregar o modal automaticamente
-  document.addEventListener("DOMContentLoaded", function () {
-    var modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
-        modalEditar.show();
-  });
-</script>
